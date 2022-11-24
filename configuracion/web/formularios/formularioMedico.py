@@ -44,7 +44,7 @@ class FormularioMedico(forms.Form):
         required=True,
         max_length=20
     ) 
-    especialidad = forms.ChoiceField(
+    Especialidad = forms.ChoiceField(
         widget=forms.Select(attrs={"class":"form-select mb-3"}),
         required=True,
         choices=ESPECIALIDADES
