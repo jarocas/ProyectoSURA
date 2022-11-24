@@ -23,6 +23,7 @@ class FormularioMedico(forms.Form):
         (3, 'Los Molinos')
     )
 
+    
     Nombre = forms.CharField(
         widget=forms.TextInput(attrs={"class":"form-control mb-3"}),
         required=True,
