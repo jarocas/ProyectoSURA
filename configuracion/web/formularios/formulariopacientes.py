@@ -2,29 +2,30 @@ from faulthandler import cancel_dump_traceback_later
 from django import forms
 class FormularioPacientes(forms.Form):
 
-    ESPECIALIDADES = (
-        (0, "Selecciona una especialidad.."),
-        (1, 'Cardiología'),
-        (2, 'Medicina Interna'),
-        (3, 'Medico General'),
-        (4, 'Ortopedia'),
-        (5, 'Pediatria')
+    TIPOAFILIACION = (
+        (0, 'Seleccionar Afiliación...'),
+        (1, 'P. Excepción'),
+        (2, 'E. Especial'),
+        (3, 'C. Contributivo'),
+        (4, 'S. Subsidiado'),
+        (5, 'N. No Asegurado'),
+        (6, 'I. Indeterminado/Pendiente')
     )
-    JORNADAS = (
-        (0, "Selecciona un Turno..."),
-        (1, '6-14'),
-        (2, '14-22'),
-        (3, '22-6')
+    GRUPO = (
+        (0, 'Seleccionar el Grupo...'),
+        (1, 'A'),
+        (2, 'B'),
+        (3, 'C')
     )
-    SEDES = (
-        (0, "Selecciona una sede..."),
-        (1, 'Almacentro'),
-        (2, 'Punto Clave'),
-        (3, 'Los Molinos')
+    COPAGO = (
+        (0, 'Seleccionar el Copago...'),
+        (1, 'Nivel A: $3.700'),
+        (2, 'Nivel B: $14.700'),
+        (3, 'Nivel C: $38.500')
     )
 
     
-    Nombre = forms.CharField(
+    Nombres = forms.CharField(
         widget=forms.TextInput(attrs={"class":"form-control mb-3"}),
         required=True,
         max_length=15
@@ -34,33 +35,35 @@ class FormularioPacientes(forms.Form):
         required=True,
         max_length=35
     ) 
-    Cedula = forms.CharField(
+    Cédula = forms.CharField(
         widget=forms.TextInput(attrs={"class":"form-control mb-3"}),
         required=True,
         max_length=10
     ) 
-    Tarjeta_Profesional = forms.CharField(
-        widget=forms.TextInput(attrs={"class":"form-control mb-3"}),
-        required=True,
-        max_length=20
-    ) 
-    especialidad = forms.ChoiceField(
-        widget=forms.Select(attrs={"class":"form-select mb-3"}),
-        required=True,
-        choices=ESPECIALIDADES
-    )
-    Jornada = forms.ChoiceField(
-         widget=forms.Select(attrs={"class":"form-select mb-3"}),
-        required=True,
-        choices=JORNADAS
-    )
     Contacto = forms.CharField(
          widget=forms.TextInput(attrs={"class":"form-control mb-3"}),
         required=True,
         max_length=20
     ) 
-    Sede = forms.ChoiceField(
+    Correo_electrónico = forms.CharField(
+         widget=forms.TextInput(attrs={"class":"form-control mb-3"}),
+        required=True,
+        max_length=20
+    ) 
+    Tipo_de_Afiliación = forms.ChoiceField(
+        widget=forms.Select(attrs={"class":"form-select mb-3"}),
+        required=True,
+        choices=TIPOAFILIACION
+    ) 
+    Grupo = forms.ChoiceField(
+        widget=forms.Select(attrs={"class":"form-select mb-3"}),
+        required=True,
+        choices=GRUPO
+    )
+    Copago = forms.ChoiceField(
          widget=forms.Select(attrs={"class":"form-select mb-3"}),
         required=True,
-        choices=SEDES
+        choices=COPAGO
     )
+   
+   

@@ -21,3 +21,4 @@ class Medicos(models.Model):
     class Meta:
         managed = False
         db_table = 'medicos'
+

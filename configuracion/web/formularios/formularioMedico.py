@@ -3,7 +3,7 @@ from django import forms
 class FormularioMedico(forms.Form):
 
     ESPECIALIDADES = (
-        (0, "Selecciona una especialidad.."),
+        (0, "Selecciona una especialidad..."),
         (1, 'Cardiología'),
         (2, 'Medicina Interna'),
         (3, 'Medico General'),
@@ -24,7 +24,7 @@ class FormularioMedico(forms.Form):
     )
 
     
-    Nombre = forms.CharField(
+    Nombres = forms.CharField(
         widget=forms.TextInput(attrs={"class":"form-control mb-3"}),
         required=True,
         max_length=15

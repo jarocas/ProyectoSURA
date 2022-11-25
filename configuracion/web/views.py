@@ -28,7 +28,7 @@ def VistaMedicos (request):
             #capturar los datos
             datos=datosRecibidos.cleaned_data
             medicoNuevo=Medicos(
-                nombres=datos["Nombre"],
+                nombres=datos["Nombres"],
                 apellidos=datos["Apellidos"],
                 cedula=datos["Cedula"],
                 tarjeta=datos["Tarjeta_Profesional"],
@@ -43,11 +43,13 @@ def VistaMedicos (request):
     return render(request,'registrosmedicos.html',diccionario)
 
 def Pacientes (request):
+    lanzandoAlerta = False
     #Debo utilizar la clase 'formularioMedico'
     # creamos entonces un objeto
     formulario=FormularioPacientes()
     diccionario={
-        "formulario":formulario
+        "formulario":formulario,
+        "bandera": lanzandoAlerta
     }
     #activar desde python la recepcion de datos
     if request.method=='POST':
@@ -56,7 +58,18 @@ def Pacientes (request):
         if datosRecibidos.is_valid():
             #capturar los datos
             datos=datosRecibidos.cleaned_data
-            print(datos)
+            pacienteNuevo=Pacientes(
+                nombres=datos["Nombres"],
+                apellidos=datos["Apellidos"],
+                cedula=datos["Césdula"],
+                contacto=datos["Contacto"],
+                correo=datos["Correo_electrónico"],
+                afiliacion=datos["Tipo_de_afiliación"],
+                grupo=datos["Grupo"],
+                copago=datos["Copago"]
+            )
+            pacienteNuevo.save()
+            diccionario["bandera"] = True
 
     return render(request,'registropacientes.html',diccionario)
 
