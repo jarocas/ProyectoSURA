@@ -35,7 +35,7 @@ class FormularioPacientes(forms.Form):
         required=True,
         max_length=35
     ) 
-    Cédula = forms.CharField(
+    Cedula = forms.CharField(
         widget=forms.TextInput(attrs={"class":"form-control mb-3"}),
         required=True,
         max_length=10
@@ -50,7 +50,7 @@ class FormularioPacientes(forms.Form):
         required=True,
         max_length=20
     ) 
-    Tipo_de_Afiliación = forms.ChoiceField(
+    Tipo_de_afiliacion = forms.ChoiceField(
         widget=forms.Select(attrs={"class":"form-select mb-3"}),
         required=True,
         choices=TIPOAFILIACION

@@ -22,3 +22,18 @@ class Medicos(models.Model):
         managed = False
         db_table = 'medicos'
 
+
+class Pacientes(models.Model):
+    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
+    nombres = models.CharField(max_length=100)
+    apellidos = models.CharField(max_length=100)
+    cedula = models.CharField(max_length=20)
+    contacto = models.CharField(max_length=20)
+    correo = models.CharField(max_length=100)
+    afiliacion = models.IntegerField()
+    grupo = models.IntegerField()
+    copago = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'pacientes'
